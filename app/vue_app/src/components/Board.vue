@@ -1,10 +1,10 @@
 <template>
   <div class="board">
-    <div>
-      <board-slot v-for="i in 9">
-
-      </board-slot>
-    </div>
+      <table>
+        <tr v-for="i in 3">
+            <td v-for="i in 3"> x </td>
+        </tr>
+      </table>
   </div>
 </template>
 
@@ -16,3 +16,10 @@
       components : {BoardSlot}
   }
 </script>
+
+
+<style>
+  .board table{
+    margin: 0 auto;
+  }
+</style>
