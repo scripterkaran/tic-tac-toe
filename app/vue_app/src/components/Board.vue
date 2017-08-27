@@ -17,7 +17,7 @@
       props:{},
       data(){
           return {
-              user_selection: '0'
+              user_selection: 'O'
           }
       },
       components : {BoardSlot}
