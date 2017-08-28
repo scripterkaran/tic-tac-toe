@@ -11,7 +11,7 @@ class TimeStampedModel(models.Model):
         abstract = True
 
 
-class TicTacToe(TimeStampedModel):
+class Game(TimeStampedModel):
     """Defines the players and maintains TicTacToe game.
     """
     player_x = models.ForeignKey(User, related_name="player_x_games", null=True, blank=True) # the player who plays X
@@ -64,10 +64,10 @@ class TicTacToe(TimeStampedModel):
               return "Its a tie"
         return False
 
-class TicTacToeMove(TimeStampedModel):
+class Move(TimeStampedModel):
     """ Defines the moves in a single TicTacToe game.
     """
-    tic_tac_toe = models.ForeignKey(TicTacToe, related_name="moves")
+    game = models.ForeignKey(Game, related_name="moves")
     played_by = models.ForeignKey(User, related_name="moves")
     position = models.PositiveIntegerField(validators=(MaxValueValidator(int(8)),MinValueValidator(int(0))))
 

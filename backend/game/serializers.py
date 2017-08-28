@@ -1,16 +1,16 @@
 from rest_framework import serializers
-from .models import TicTacToe, TicTacToeMove
+from .models import Game, Move
 
 
-class TicTacToeSerializer(serializers.ModelSerializer):
+class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model  = TicTacToe
+        model  = Game
         fields =('url','player_x', 'player_o', 'is_completed', 'created_by')
 
 
-class TicTacToeMoveSerializer(serializers.ModelSerializer):
+class MoveSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = TicTacToeMove
+        model = Move
         fields = '__all__'

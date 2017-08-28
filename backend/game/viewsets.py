@@ -1,12 +1,20 @@
 from rest_framework import viewsets
-from .models import TicTacToe, TicTacToeMove
-from .serializers import TicTacToeSerializer, TicTacToeMoveSerializer
+from rest_framework.decorators import detail_route
+
+from .models import Game, Move
+from .serializers import GameSerializer, MoveSerializer
 
 
-class TicTacToeViewSet(viewsets.ModelViewSet):
-    queryset = TicTacToe.objects.all()
-    serializer_class = TicTacToeSerializer
+class GameViewSet(viewsets.ModelViewSet):
+    queryset = Game.objects.all()
+    serializer_class = GameSerializer
 
-class TicTacToeMoveViewSet(viewsets.ModelViewSet):
-    queryset = TicTacToeMove.objects.all()
-    serializer_class = TicTacToeMoveSerializer
+class MoveViewSet(viewsets.ModelViewSet):
+    queryset = Move.objects.all()
+    serializer_class = MoveSerializer
+
+
+    def get_queryset(self):
+        game_pk = self.kwargs.get('game_pk')
+        if game_pk:
+            return self.queryset.filter(game=game_pk)
