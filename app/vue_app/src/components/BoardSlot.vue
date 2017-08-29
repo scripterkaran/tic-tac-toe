@@ -1,30 +1,27 @@
 <template>
   <div class="slot-box" @click="markMove">
-    <span> {{text}}</span></div>
+    {{move.position}}
+    <span> {{move.symbol}}</span></div>
 </template>
 
 <script>
   export default {
-      props: ['user_selection'],
-      data(){
-          return{
-              text: ''
-          }
+    props: ['index', 'move'],
+    methods: {
+      markMove(){
+        this.$emit('moveMarked', this.move.position)
       },
-      methods:{
-        markMove(){
-            this.text = this.user_selection
-        }
-      }
+    }
   }
 </script>
 
 <style scoped>
-  .slot-box{
+  .slot-box {
     border: 1px solid red;
     min-height: 40px;
     min-width: 40px;
   }
+
   .slot-box span {
     text-transform: uppercase;
     font-size: 18px;
