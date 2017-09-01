@@ -23,3 +23,9 @@ class MoveViewSet(viewsets.ModelViewSet):
         game_pk = self.kwargs.get('game_pk')
         if game_pk:
             return self.queryset.filter(game=game_pk)
+
+
+    def create(self, request, *args, **kwargs):
+        game_instance = self.get_object()
+        if game_instance.next_move_by == request.user:
+            return super(MoveViewSet, self).create(request, *args,**kwargs)

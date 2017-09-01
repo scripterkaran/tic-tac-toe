@@ -47,6 +47,7 @@ THRID_PARTY_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
+    'django_extensions',
 )
 
 INSTALLED_APPS  += THRID_PARTY_APPS

@@ -1,9 +1,13 @@
 <template>
   <div class="board">
     <div>
-      <div v-for="move in moves">
-        <board-slot :move="move" @moveMarked="moveMarked"></board-slot>
-      </div>
+      <table>
+          <tr v-for='row in board'>
+            <td v-for='slot in row'>
+              <board-slot :move="{'row': row , 'position': slot}" @moveMarked="moveMarked"></board-slot>
+            </td>
+          </tr>
+        </table>
     </div>
   </div>
 </template>
@@ -17,12 +21,11 @@
       return {
         user_selection: 'O',
         markedIndex: [],
-        moves: []
+        board: [[1,2,3],[4,5,6],[7,8,9]]
       }
     },
     mounted(){
-      while (this.moves.length < 9)
-        this.moves.push({'position': this.moves.length + 1, 'symbol': ''});
+
     },
     components: {BoardSlot},
     methods: {

@@ -1,7 +1,6 @@
 <template>
   <div class="slot-box" @click="markMove">
-    {{move.position}}
-    <span> {{move.symbol}}</span></div>
+    <span class="meta"> {{move.position}} - {{move.row }}</span></div>
 </template>
 
 <script>
@@ -17,16 +16,17 @@
 
 <style scoped>
   .slot-box {
-    border: 1px solid red;
-    min-height: 40px;
-    min-width: 40px;
-  }
-
-  .slot-box span {
-    text-transform: uppercase;
-    font-size: 18px;
-    font-weight: 600;
+    width: 15vw;
+    height: 15vw;
+    background: #6C7A89;
+    cursor: pointer;
+    font-size: 15vw;
+    line-height: 15vw;
     text-align: center;
-    line-height: 40px;
+    color: white;
   }
+  .meta{
+      font-size: 10px;
+       position: absolute;
+   }
 </style>
