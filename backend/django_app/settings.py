@@ -38,7 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'game'
+    'game',
+    'lazysignup'
 )
 
 THRID_PARTY_APPS = (
@@ -85,6 +86,11 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+  'django.contrib.auth.backends.ModelBackend',
+  'lazysignup.backends.LazySignupBackend',
+)
 
 WSGI_APPLICATION = 'django_app.wsgi.application'
 

@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^v1/', include('game.urls', namespace='v1')),
+    url(r'^convert/', include('lazysignup.urls')),
 ]
